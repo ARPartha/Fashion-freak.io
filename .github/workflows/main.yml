@@ -22,8 +22,8 @@ jobs:
           go-version: 1.19
 
       - name: Build
-        run: go build -v ../main.go
+        run: go build -v main.go
       - name: Run
-        run: go run ../Fashion-Freaks
+        run: go run Fashion-Freaks
       - name: Test
-        run: go test -v ../Fashion-Freaks
+        run: go test -v Fashion-Freaks
