@@ -1,23 +1,28 @@
-name: Deploy to GitHub Pages
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
 on:
   push:
-    branches:
-      - master
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Go
-        run: sudo apt-get install -y golang
-      - name: Build Beego project
-        run: go build -o main .
-      - name: Deploy to GitHub Pages
-        run: |
-          mkdir -p /var/www/html
-          cp main /views/
-          git config --global user.name "Arpartha"
-          git config --global user.email "abrahmanpartha@gmail.com"
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          git push github --follow-tags
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: Build
+        run: go build -v ./main.go
+
+      - name: Test
+        run: go test -v ./Fashion-Freaks
