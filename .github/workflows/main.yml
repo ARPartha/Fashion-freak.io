@@ -24,6 +24,6 @@ jobs:
       - name: Build
         run: go build -v main.go
       - name: Run
-        run: go run Fashion-Freaks
+        run: go run main.go
       - name: Test
         run: go test -v Fashion-Freaks
