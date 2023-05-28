@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           mkdir -p /var/www/html
-          cp main /var/www/html/
+          cp main /views/
           git config --global user.name "Arpartha"
           git config --global user.email "abrahmanpartha@gmail.com"
           git add .
